@@ -9,9 +9,9 @@ public class Equation : MonoBehaviour
     private string equation;
 
 
-    public Equation()
+    public Equation(string newEquation)
     {
-
+        equation = newEquation;
     }
     public string GetEquation()
     {
