@@ -8,6 +8,10 @@ public class GameInfo : MonoBehaviour
     public string version = "0.3 pre-alpha";
     public string company = "Infinity Games";
     public List<string> developers;
+
+    public string info;
+
+
     // Start is called before the first frame update
     void Start()
     {
