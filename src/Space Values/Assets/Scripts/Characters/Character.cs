@@ -1,23 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour
+internal abstract class Character : MonoBehaviour
 {
-    internal byte health;
-    [SerializeField]
-    internal float speed;
+    [SerializeField] private protected byte health;
+    [SerializeField] private protected float speed;
 
-    public byte Health { get => health; set => health = value; }
-    public float Speed { get => speed; set => speed = value; }
+    private protected CharacterController controller;
 
 
-    public abstract void Death();
-    public abstract void Movement();
-    public abstract void CheckCollision();
-    public abstract void TakeDamage(byte amount);
-    private void CheckDeath()
+
+    internal byte Health { get => health; private set => health = value; }
+    internal float Speed { get => speed; private set => speed = value; }
+
+
+
+    internal abstract void Death();
+    internal abstract void Movement();
+    internal abstract void CheckCollision();
+    internal abstract void TakeDamage(byte amount);
+    void CheckDeath()
     {
 
+    }
+    internal void MoveUp()
+    {
+        controller.Move(transform.up.normalized * speed * Time.deltaTime);
+    }
+    internal void MoveDown()
+    {
+        controller.Move(-transform.up.normalized * speed * Time.deltaTime);
+    }
+    internal void MoveLeft()
+    {
+        controller.Move(-transform.right.normalized * speed * Time.deltaTime);
+    }
+    internal void MoveRight()
+    {
+        controller.Move(transform.right.normalized * speed * Time.deltaTime);
     }
 }

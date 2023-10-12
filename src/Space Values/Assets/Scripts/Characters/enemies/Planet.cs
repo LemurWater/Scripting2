@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Planet : Enemy
+internal class Planet : Enemy
 {
     public Planet()
     {
@@ -18,22 +18,22 @@ public class Planet : Enemy
         throw new System.NotImplementedException();
     }
 
-    public override void CheckCollision()
+    internal override void CheckCollision()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void Death()
+    internal override void Death()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void Movement()
+    internal override void Movement()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void TakeDamage(byte amount)
+    internal override void TakeDamage(byte amount)
     {
         throw new System.NotImplementedException();
     }

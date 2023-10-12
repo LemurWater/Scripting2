@@ -115,7 +115,7 @@ public class Background : MonoBehaviour
 
     private Color RandomColor()
     {
-        if(colorIndex >= randomTable[colorIndexMax])
+        /*if(colorIndex >= randomTable[colorIndexMax] - 1)
         {
 
             colorIndex = 0;
@@ -127,6 +127,7 @@ public class Background : MonoBehaviour
         {
             colorIndex++;
             return color1;
-        }
+        }*/
+        return Color.white;
     }
 }

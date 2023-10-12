@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceGiant : Giant
+internal class IceGiant : Giant
 {
     public IceGiant() : base()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GasGiant : Giant
+internal class GasGiant : Giant
 {
     public GasGiant() : base() 
     {

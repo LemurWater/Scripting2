@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Setup : MonoBehaviour
+internal class Setup : MonoBehaviour
 {
     public GameInfo gameInfo;
     public TextMeshProUGUI build;
@@ -11,6 +9,9 @@ public class Setup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameInfo = GameObject.FindAnyObjectByType<GameInfo>();
+        build = GameObject.FindAnyObjectByType<TextMeshProUGUI>();
+
         SetBuildInfo();
     }
 
@@ -21,6 +22,6 @@ public class Setup : MonoBehaviour
     }
     void SetBuildInfo()
     {
-        build.text = gameInfo.gameName + " - build v" + gameInfo.version + " - " + gameInfo.info;
+        build.text = gameInfo.Name + " - build v" + gameInfo.Version + " - " + gameInfo.Company + " - " + gameInfo.Info;
     }
 }

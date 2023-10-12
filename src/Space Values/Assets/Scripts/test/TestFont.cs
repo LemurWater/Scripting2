@@ -36,7 +36,10 @@ public class TestFont : MonoBehaviour
     {
         foreach (var text in l_texts)
         {
-            text.font = l_fonts[index];
+            if (text != null)
+            {
+                text.font = l_fonts[index];
+            }
         }
     }
 }
