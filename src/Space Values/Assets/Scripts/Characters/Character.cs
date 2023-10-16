@@ -1,41 +1,53 @@
 using UnityEngine;
 
-internal abstract class Character : MonoBehaviour
+public abstract class Character : CelestialBody
 {
     [SerializeField] private protected byte health;
-    [SerializeField] private protected float speed;
-
     private protected CharacterController controller;
 
 
 
-    internal byte Health { get => health; private set => health = value; }
-    internal float Speed { get => speed; private set => speed = value; }
+    public byte Health { get => health; private set => health = value; }
+    //public float Speed { get => speed; private set => speed = value; }
 
+    //internal abstract void CheckCollision();
+    protected void Default()
+    {
+        controller = gameObject.GetComponent<CharacterController>();
+    }
+ 
+    public void MoveFoward()
+    {
+        controller.Move(transform.forward * speed * Time.deltaTime);
+    }
+    public void MoveBackwards()
+    {
+        controller.Move(-transform.forward * speed * Time.deltaTime);
+    }   /*
+    public void TurnLeft()
+    {
+        controller.Move(-transform.right * xSpeed * Time.deltaTime);
+    }
+    public void TurnRight()
+    {
+        controller.Move(transform.right * xSpeed * Time.deltaTime);
+    }*/
 
-
-    internal abstract void Death();
-    internal abstract void Movement();
-    internal abstract void CheckCollision();
-    internal abstract void TakeDamage(byte amount);
-    void CheckDeath()
+    public virtual void TakeDamage(byte amount)
     {
-
+        health -= amount;
+        CheckDeath();
     }
-    internal void MoveUp()
+    private protected void CheckDeath()
     {
-        controller.Move(transform.up.normalized * speed * Time.deltaTime);
+        Debug.Log("CheckDeath");
+        if(health <= 0)
+        {
+            Death();
+        }
     }
-    internal void MoveDown()
+    private protected virtual void Death()
     {
-        controller.Move(-transform.up.normalized * speed * Time.deltaTime);
-    }
-    internal void MoveLeft()
-    {
-        controller.Move(-transform.right.normalized * speed * Time.deltaTime);
-    }
-    internal void MoveRight()
-    {
-        controller.Move(transform.right.normalized * speed * Time.deltaTime);
+        //Destroy(gameObject);
     }
 }

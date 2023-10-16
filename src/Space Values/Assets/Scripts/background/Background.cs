@@ -86,7 +86,7 @@ public class Background : MonoBehaviour
             float a = Random.Range(-createRange - hbOrigen.transform.position.x, createRange + hbOrigen.transform.position.x);
             Vector3 newPos = new Vector3(a, hbOrigen.transform.position.y, 0);
 
-            s.GetComponent<Star>().speed = RandomSpeed();
+            s.GetComponent<Star>().SetSpeed(RandomSpeed());
             ChangeSize(s);
             s.transform.position = newPos;
 
@@ -110,7 +110,7 @@ public class Background : MonoBehaviour
     private void ChangeSize(GameObject star)
     {
         Star scriptStar = star.GetComponent<Star>();
-        star.transform.localScale = star.transform.localScale  * scriptStar.speed * xFactorTransform;
+        star.transform.localScale = star.transform.localScale  * scriptStar.Speed * xFactorTransform;
     }
 
     private Color RandomColor()

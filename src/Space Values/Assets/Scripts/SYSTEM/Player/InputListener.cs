@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-internal class InputListener : MonoBehaviour
+public class InputListener : MonoBehaviour
 {
-    Hotkeys hotkeys;
-    MenuManager menuManager;
+    [SerializeField] private Hotkeys hotkeys;
+    [SerializeField] private MenuManager menuManager;
     //CameraController cameraScript;
 
-    private bool groundedPlayer;
+    [SerializeField] private Player player;
 
-    public Character character;
+
+
+    [SerializeField] private MatrioskaBrain characterRotator;
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         hotkeys = GameObject.FindObjectOfType<Hotkeys>();
         menuManager = GameObject.FindObjectOfType<MenuManager>();
@@ -22,15 +24,16 @@ internal class InputListener : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Menu();
         Movement();
+        Actions();
     }
 
-    void Menu()
+    private void Menu()
     {
-        if (Input.GetKeyDown(hotkeys.MenuOptions))
+        if (Input.GetKeyDown(hotkeys.MenuMain))
         {
             if (menuManager.MainMenu())
             {
@@ -42,53 +45,66 @@ internal class InputListener : MonoBehaviour
             }
         }
     }
-    void Movement()
+    private void Movement()
     {
-        MoveUp();
-        MoveDown();
-        MoveLeft();
-        MoveRight();
+        MoveFoward();
+        MoveBackwads();
+        TurnLeft();
+        TurnRight();
     }
-    void MoveUp()
+    private void Actions()
     {
-        foreach (KeyCode keyCode in hotkeys.MoveUp)
+        Shoot();
+    }
+    private void Shoot()
+    {
+        if (Input.GetKeyDown(hotkeys.Shoot[0]) || Input.GetKeyDown(hotkeys.Shoot[1]))
+        {
+            player.Shoot();
+        }
+    }
+    private void MoveFoward()
+    {
+        foreach (KeyCode keyCode in hotkeys.MoveFoward)
         {
             if (Input.GetKey(keyCode))
             {
-                character.MoveUp();
+                player.MoveFoward();
                 return;
             }
         }
     }
-    void MoveDown()
+    private void MoveBackwads()
     {
-        foreach (KeyCode keyCode in hotkeys.MoveDown)
+        foreach (KeyCode keyCode in hotkeys.MoveBackwards)
         {
             if (Input.GetKey(keyCode))
             {
-                character.MoveDown();
+                player.MoveBackwards();
                 return;
             }
         }
     }
-    void MoveLeft()
+    private void TurnLeft()
     {
         foreach(KeyCode keyCode in hotkeys.MoveLeft)
         {
             if (Input.GetKey(keyCode))
             {
-                character.MoveLeft();
+                characterRotator.TurnLeft();
+                //character.TurnLeft();
                 return;
             }
         }
     }
-    void MoveRight()
+    private void TurnRight()
     {
         foreach (KeyCode keyCode in hotkeys.MoveRight)
         {
             if (Input.GetKey(keyCode))
             {
-                character.MoveRight();
+                characterRotator.TurnRight();
+                //character.TurnRight();
                 return;
             }
         }

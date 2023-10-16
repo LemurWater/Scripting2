@@ -2,12 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-internal class GasGiant : Giant
+public class GasGiant : Giant
 {
-    public GasGiant() : base() 
+    [SerializeField] GameObject gameOver;
+    private protected override void CheckCollision(Collision collision)
     {
-        health = 12;
-        speed = 2.5f;
-        radius = 7.5f;
+        base.CheckCollision(collision);
+
+
+        if (collision != null)
+        {
+            GameObject go = collision.gameObject;
+
+            if (go.tag == "Matrioska Brain")
+            {
+                Debug.Log("GAME OVER");
+                DestroyCelestialBody();
+                gameOver.SetActive(true);
+
+                return;
+            }
+        }
     }
 }

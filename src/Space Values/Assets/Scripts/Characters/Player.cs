@@ -2,90 +2,97 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-internal class Player : Character
+public class Player : Character
 {
+    [SerializeField] private byte maxHealh;
+    [Space(5)]
+    private Weapon weapon;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform GunSocketA;
+    [SerializeField] private Transform GunSocketB;
+    [SerializeField] private Transform GunSocketC;
 
-    private List<Weapon> weapons;
 
-    /*
-    public Player()
+
+
+    public static Player Instance {  get; private set; }
+
+
+
+
+    private void Awake()
     {
-            health = 8;
-            speed = 2.0f;
-    }*/
-
-
-
-
-    void Start()
-    {
-        controller = gameObject.GetComponent<CharacterController>();
-    }
-    void Update()
-    {
-        Movement();
-        Shoot();
-    }
-
-
-
-
-
-
-
-    internal override void Movement()
-    {
-
-    }
-    private void Shoot()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
+        if (Instance == null)
         {
-            Debug.Log("Shoot");
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-
-    internal override void CheckCollision()
+    private void Start()
     {
-        throw new System.NotImplementedException();
+        Default();
     }
-
-    internal override void Death()
+    private void Update()
     {
-        throw new System.NotImplementedException();
-    }
-
-    internal override void TakeDamage(byte amount)
-    {
-        throw new System.NotImplementedException();
+        
     }
 
 
 
-
-
-
-
-
-
-
-    private void PickWeapon(PickUp pickUp)
+    internal void Shoot()
     {
-
-    }
-    private void SwapWeapon()
-    {
-
-    }
-    private void ChangeWeapon(Weapon newWeapon)
-    {
-        foreach(Weapon w in weapons)
+        if(bullet != null)
         {
-            if(w != newWeapon)
-            {
-                weapons.Add(newWeapon);
-            }
+            GameObject go = Instantiate(bullet, GunSocketA.transform.position, transform.rotation);
+
+            go.transform.rotation = transform.parent.rotation;
+        }
+    }
+
+    private protected override void Death()
+    {
+        base.Death();
+    }
+
+    public override void TakeDamage(byte amount)
+    {
+        base.TakeDamage(amount);
+    }
+
+
+
+
+    public void PickUp(PickUpType type, byte amount)
+    {
+        switch(type)
+        {
+            case PickUpType.Weapon: PickWeapon(amount); break;
+            case PickUpType.Ammo: PickAmmo(amount); break;
+            case PickUpType.Health: PickHealth(amount); break;
+        }
+    }
+    private void PickWeapon(byte index)
+    {
+
+    }
+    private void PickAmmo(byte amount)
+    {
+        weapon.AddAmmo(amount);
+    }
+    private void PickHealth(byte amount)
+    {
+        health += amount;
+        CheckMaxHealth();
+    }
+    private void CheckMaxHealth()
+    {
+        if (health > maxHealh)
+        {
+            health = maxHealh;
         }
     }
 }

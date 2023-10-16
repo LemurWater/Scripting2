@@ -1,20 +1,23 @@
 using TMPro;
 using UnityEngine;
 
-internal class MenuManager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    GameObject background;
-    TextMeshProUGUI title;
-    GameObject options;
+    [SerializeField] private GameObject background;
+    [SerializeField] private GameObject title;
+
+    [SerializeField] private GameObject mainMenu;
+    private GameObject optionsMenu;
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        background = GameObject.Find("Menu Background");
-        title = GameObject.Find("Menu Title").GetComponent<TextMeshProUGUI>();
+        //background = GameObject.Find("Menu Background");
+        //title = GameObject.Find("Menu Title");
 
-        options = GameObject.Find("-Options-");
+        //mainMenu = GameObject.Find("-MAIN MENU-");
+        optionsMenu = GameObject.Find("-OPTIONS-");
     }
 
     // Update is called once per frame
@@ -23,23 +26,34 @@ internal class MenuManager : MonoBehaviour
         
     }
 
-    internal bool MainMenu()
+    public bool MainMenu()
     {
-        if (options.activeInHierarchy == false)
+        if (mainMenu.activeInHierarchy == false)
         {
-            options.SetActive(true);
+            mainMenu.SetActive(true);
             background.SetActive(true);
-            title.gameObject.SetActive(true);
+            title.SetActive(true);
             Cursor.lockState = CursorLockMode.Confined;
             return true;
         }
         else
         {
-            options.SetActive(false);
+            mainMenu.SetActive(false);
             background.SetActive(false);
-            title.gameObject.SetActive(false);
+            title.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             return false;
+        }
+    }
+    public void OptionsMenu()
+    {
+        if(optionsMenu.activeInHierarchy == false)
+        {
+            optionsMenu.SetActive(true);
+        }
+        else
+        {
+            optionsMenu.SetActive(false);
         }
     }
 }

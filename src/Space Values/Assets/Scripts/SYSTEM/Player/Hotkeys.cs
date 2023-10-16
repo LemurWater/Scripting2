@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-internal class Hotkeys : MonoBehaviour
+public class Hotkeys : MonoBehaviour
 {
     [Space(15)]
     [Header("System - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")]
@@ -13,7 +13,7 @@ internal class Hotkeys : MonoBehaviour
     [Space(15)]
     [Header("Menu/Options - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")]
     [Space(5)]
-    [SerializeField] private KeyCode menuOptions = KeyCode.Escape;
+    [SerializeField] private KeyCode menuMain = KeyCode.Escape;
     [Header("Default - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")]
     [Space(5)]
     [SerializeField] private KeyCode primaryClick = KeyCode.Mouse0;
@@ -21,8 +21,8 @@ internal class Hotkeys : MonoBehaviour
     [Header("Character - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")]
     [Space(5)]
     [Header("Movement - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")]
-    [SerializeField] private KeyCode[] moveUp = { KeyCode.W, KeyCode.UpArrow };
-    [SerializeField] private KeyCode[] moveDown = { KeyCode.S, KeyCode.DownArrow };
+    [SerializeField] private KeyCode[] moveFoward = { KeyCode.W, KeyCode.UpArrow };
+    [SerializeField] private KeyCode[] moveBackwards = { KeyCode.S, KeyCode.DownArrow };
     [SerializeField] private KeyCode[] moveLeft = { KeyCode.A, KeyCode.LeftArrow };
     [SerializeField] private KeyCode[] moveRight = { KeyCode.D, KeyCode.RightArrow };
     [Header("Combat - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")]
@@ -43,11 +43,11 @@ internal class Hotkeys : MonoBehaviour
     internal KeyCode Console { get => console; private set => console = value; }
     internal KeyCode[] ExitProgram { get => exitProgram; private set => exitProgram = value; }
     internal KeyCode[] ToggleHUD { get => toggleHUD; private set => toggleHUD = value; }
-    internal KeyCode MenuOptions { get => menuOptions; private set => menuOptions = value; }
+    internal KeyCode MenuMain { get => menuMain; private set => menuMain = value; }
     internal KeyCode PrimaryClick { get => primaryClick; private set => primaryClick = value; }
     internal KeyCode SecondaryClick { get => secondaryClick; private set => secondaryClick = value; }
-    internal KeyCode[] MoveUp { get => moveUp; private set => moveUp = value; }
-    internal KeyCode[] MoveDown { get => moveDown; private set => moveDown = value; }
+    internal KeyCode[] MoveFoward { get => moveFoward; private set => moveFoward = value; }
+    internal KeyCode[] MoveBackwards { get => moveBackwards; private set => moveBackwards = value; }
     internal KeyCode[] MoveLeft { get => moveLeft; private set => moveLeft = value; }
     internal KeyCode[] MoveRight { get => moveRight; private set => moveRight = value; }
     internal KeyCode[] Shoot { get => shoot; private set => shoot = value; }
@@ -58,16 +58,4 @@ internal class Hotkeys : MonoBehaviour
     internal KeyCode SpellD { get => spellD; private set => spellD = value; }
     #endregion Accesors
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
