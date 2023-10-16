@@ -1,8 +1,6 @@
 ------------------------------------------------------------------------
 # Scripting2
 ------------------------------------------------------------------------
-Integrantes:
-Lemus David Watler Escobar
 ------------------------------------------------------------------------
 Cambios:
 -Se agrego la estructura "Background", con los scripts Background y Star
