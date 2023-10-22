@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5717403409042303872}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7062863, y: -0, z: -0, w: 0.70792633}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5659990997167337065}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.869, y: 0, z: 0}
 --- !u!198 &5870425248074031084
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4876,8 +4876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ce61a1b86a193499befb8bcf557e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   damage: 1
+  speed: 5
   controller: {fileID: 4105742264328218493}
 --- !u!143 &4105742264328218493
 CharacterController:
@@ -4932,9 +4932,9 @@ Transform:
   m_GameObject: {fileID: 7192465910850297226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7072336, z: -0, w: 0.70697993}
-  m_LocalPosition: {x: -8.547797, y: 0, z: 2.2017956}
-  m_LocalScale: {x: 0.07283998, y: 0.07284, z: 0.07283998}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5659990997167337065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

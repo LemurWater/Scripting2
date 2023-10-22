@@ -39,7 +39,6 @@ public class EnemyPool : MonoBehaviour
         Enemy enemyInstance = enemyFactory.CreateGasGiant();
         Recycle(enemyInstance);
         boss = enemyInstance;
-
     }
     private void CreateInstance(Enemy enemyInstance)
     {
@@ -57,24 +56,30 @@ public class EnemyPool : MonoBehaviour
         }
         e = Pool[0];
         Pool.RemoveAt(0);
-        e.Reset(true);
+        e.ResetState(true);
         //e.gameObject.transform.position = transform.position;
 
         return e;
     }
     public Enemy RetrieveBoss()
     {
-        boss.Reset(true);
+        boss.ResetState(true);
         return boss;
     }
 
     public void Recycle(Enemy enemy)
     {
-        enemy.Reset(false);
-        Pool.Add(enemy);
+        enemy.ResetState(false);
         enemy.transform.parent = enemyPool;
         enemy.transform.position = transform.position; 
         enemy.transform.rotation = transform.rotation;
-        Pool.Add(enemy);
+        if (enemy is GasGiant)
+        {
+            boss = (GasGiant)enemy;
+        }
+        else
+        {
+            Pool.Add(enemy);
+        }
     }
 }

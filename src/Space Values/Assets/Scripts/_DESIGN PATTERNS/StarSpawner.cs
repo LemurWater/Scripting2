@@ -77,7 +77,7 @@ public class StarSpawner : MonoBehaviour
             CreateInstance();
         }
         s = stars.Dequeue().GetComponent<Star>();
-        s.Reset(true);
+        s.ResetState(true);
         s.SetSpeed(startingSpeed);
         SetRandomPosition(s.transform);
 
@@ -85,7 +85,7 @@ public class StarSpawner : MonoBehaviour
     }
     public void Recycle(CelestialBody s)
     {
-        s.Reset(false);
+        s.ResetState(false);
         s.transform.parent = starsGroup;
         s.transform.position = spawnPoints[spawnIndex].position;
         s.transform.rotation = spawnPoints[spawnIndex].rotation;

@@ -40,13 +40,13 @@ public class StarPool : MonoBehaviour
         }
         s = pool[0];
         pool.RemoveAt(0);
-        s.Reset(true);
+        s.ResetState(true);
 
         return s;
     }
     public void Recycle(Star star)
     {
-        star.Reset(false);
+        star.ResetState(false);
         pool.Add(star);
         star.transform.parent = starPool;
         star.transform.position = transform.position;

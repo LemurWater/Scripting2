@@ -8,4 +8,8 @@ public abstract class Giant : Enemy
     {
 
     }
+    private protected override void CheckTrigger(Collider collider)
+    {
+        base.CheckTrigger(collider);
+    }
 }

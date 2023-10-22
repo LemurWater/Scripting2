@@ -54,7 +54,7 @@ public class EnemyFacade : MonoBehaviour
                 {
                     return;
                 }
-                enemy.Reset(true);
+                enemy.ResetState(true);
                 enemy.gameObject.transform.position = spawnPointA.position;
             }
             else if (level1Planets <= 0 && bossSection == false)

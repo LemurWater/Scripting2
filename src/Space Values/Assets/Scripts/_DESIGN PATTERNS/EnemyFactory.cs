@@ -21,10 +21,7 @@ public class EnemyFactory : MonoBehaviour
 
     public Enemy CreateInstance(Enemy e)
     {
-        Enemy go = Instantiate(e);
-        go.SetSpeed(0.0f);
-
-        return go;
+        return Instantiate(e);
     }
     public Enemy CreateMeteor()
     {

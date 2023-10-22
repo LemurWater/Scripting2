@@ -17,10 +17,6 @@ public abstract class Enemy : Character
     }
 
 
-    void OnTriggerEnter(Collider collider)
-    {
-        CheckTrigger(collider);
-    }
     private protected override void CheckTrigger(Collider collider)
     {
         base.CheckTrigger(collider);
@@ -30,7 +26,7 @@ public abstract class Enemy : Character
             GameObject go = collider.gameObject;
             if (go.tag == "Bullet")
             {
-                Debug.Log("Collision: Enemy - Bullet");
+                Debug.Log("Collision: Enemy - Bullet = " + gameObject.name);
                 TakeDamage(go.GetComponent<Bullet>().Damage);
                 Destroy(go);
                 return;
@@ -46,14 +42,25 @@ public abstract class Enemy : Character
     }
     private protected override void DestroyCelestialBody()
     {
-        Death();
+        base.DestroyCelestialBody();
         //pool.Recycle(this);
         //Spawner?.Recycle(this);
     }
     private protected override void Death()
     {
+        DestroyCelestialBody();
+
         pool.Recycle(this);
         enemyFacade.enemiesKilled++;
-        Debug.Log("EnemiesKilled++");
+        Debug.Log("FACADE  = nemiesKilled++");
+    }
+    public override void ResetState(bool state)
+    {
+        base.ResetState(state);
+
+        if (state)
+        {
+            health = 3;
+        }
     }
 }

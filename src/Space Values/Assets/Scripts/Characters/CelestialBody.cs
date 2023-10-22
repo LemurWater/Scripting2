@@ -29,9 +29,9 @@ public abstract class CelestialBody : MonoBehaviour
 
 
 
-    public void Reset(bool activate)
+    public virtual void ResetState(bool state)
     {
-        if (activate)
+        if (state)
         {
             gameObject.SetActive(true);
             speed = 10.0f;
@@ -56,6 +56,7 @@ public abstract class CelestialBody : MonoBehaviour
         var step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, matrioskaBrain.position, step);
     }
+
 
     private protected virtual void CheckTrigger(Collider collider)
     {

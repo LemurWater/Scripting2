@@ -18,7 +18,7 @@ public abstract class Character : CelestialBody
     {
         controller = gameObject.GetComponent<CharacterController>();
     }
- 
+
     public void MoveFoward()
     {
         controller.Move(transform.forward * speed * Time.deltaTime);
@@ -43,14 +43,17 @@ public abstract class Character : CelestialBody
     }
     private protected void CheckDeath()
     {
-        Debug.Log("CheckDeath");
-        if(health <= 0)
+        if (health <= 0)
         {
             Death();
         }
     }
     private protected virtual void Death()
     {
-        //Destroy(gameObject);
+        DestroyCelestialBody();
+    }
+    private protected override void CheckTrigger(Collider collider)
+    {
+        base.CheckTrigger(collider);
     }
 }

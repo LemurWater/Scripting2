@@ -89,4 +89,12 @@ public class MatrioskaBrain : Character
         throw new System.NotImplementedException();
         //GAME OVER
     }
+    /*
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Enemy" && collider.name == "Gas Giant(Clone)")
+        {
+            collider.gameObject.GetComponent<GasGiant>().GameOver();
+        }
+    }*/
 }
