@@ -16,7 +16,7 @@ PATRONES
 ![Diagram1](https://github.com/LemurWater/Scripting2/assets/38868316/69d73e7b-9761-4977-9c7f-e303fd9bc8b0)
 
 
-instanciacion en oop
+EJECUTABLE EN CARPETA "Build"
 
 
 
