@@ -15,31 +15,26 @@ PATRONES
 -------------------------------------------
 ![Diagram1](https://github.com/LemurWater/Scripting2/assets/38868316/69d73e7b-9761-4977-9c7f-e303fd9bc8b0)
 
+Actualizado:
+![Diagram2](https://github.com/LemurWater/Scripting2/assets/38868316/680478fc-35d3-4b9c-bf32-85e5f62e6699)
 
-EJECUTABLE EN CARPETA "Build"
+
+
+EJECUTABLE https://drive.google.com/drive/folders/1dLovNoaiHpNeSG-qym-H060GeSnb2R3e?usp=sharing
 
 
 
 Singleton 
-	 Pick Up
-	 player
-	 MatrioskaBrain
-	 StarSpawner
-	 StarDestroyer
+	 Player(PlanetShip) <No necesario>
 	 
-		"Necesarios para controlar 2d/3d"
 Pool
-	Stars
-		"Completamente necesarios y utiles"
-		NOTA: Se decidio convenientemente incluir los patrones de Pooling y Factoring en el mismo script
+	Enemy
+ 
 Factory
-	enemies
-		Pick ups
-		stars
-		bullets
+	EnemySpawner
 	
 Decorator
-	WeaponUpgrades
+	Bullet
 	
 Facade
 	Spawn enemies
@@ -48,3 +43,6 @@ Flyweight
 	star speed
 	enemy max health
 	bullet speed
+ 	bullet damage
+
+
