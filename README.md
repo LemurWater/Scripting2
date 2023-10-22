@@ -45,4 +45,7 @@ Flyweight
 	bullet speed
  	bullet damage
 
+  Descripcion: se adapto el proyecto para implementar patrones de diseno principalmente en la estructura de los enemigos, como se almacenan, su cantidad maxima, como aparecen y desaparecen, se utilizo la fachada para crear la sensacion de nivel.
+  Se debio adaptar las clases utilizando el codigo base de las funcionalidades pero categorizado en objetos especializados para los patrones
+
 
