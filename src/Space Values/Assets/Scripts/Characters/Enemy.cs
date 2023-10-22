@@ -5,15 +5,11 @@ using static UnityEngine.GraphicsBuffer;
 
 public abstract class Enemy : Character
 {
-    [SerializeField] private byte damage;
-
-
-
-    public byte Damage { get => damage; private set => damage = value; }
-
+    [SerializeField] private protected byte damage;
+    [SerializeField] EnemyFacade enemyFacade;
 
     public EnemyPool pool { get; set; }
-
+    public byte Damage { get => damage; set => damage = value; }
 
     private void Update()
     {
@@ -21,17 +17,17 @@ public abstract class Enemy : Character
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        CheckCollision(collision);
+        CheckTrigger(collider);
     }
-    private protected override void CheckCollision(Collision collision)
+    private protected override void CheckTrigger(Collider collider)
     {
-        base.CheckCollision(collision);
+        base.CheckTrigger(collider);
 
-        if (collision != null)
+        if (collider != null)
         {
-            GameObject go = collision.gameObject;
+            GameObject go = collider.gameObject;
             if (go.tag == "Bullet")
             {
                 Debug.Log("Collision: Enemy - Bullet");
@@ -39,13 +35,25 @@ public abstract class Enemy : Character
                 Destroy(go);
                 return;
             }
-            else if (go.tag == "Player")
+            else if (go.tag == "Planet Ship")
             {
                 Debug.Log("Collision: Enemy - Player");
-                go.GetComponent<Player>().TakeDamage(Damage);
+                go.GetComponent<PlanetShip>().TakeDamage(damage);
                 Death();
                 return;
             }
         }
+    }
+    private protected override void DestroyCelestialBody()
+    {
+        Death();
+        //pool.Recycle(this);
+        //Spawner?.Recycle(this);
+    }
+    private protected override void Death()
+    {
+        pool.Recycle(this);
+        enemyFacade.enemiesKilled++;
+        Debug.Log("EnemiesKilled++");
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Star : CelestialBody
 {
+    public StarPool pool { get; set; }
+
+
     private void Update()
     {
         //TwoDMovement();
@@ -11,9 +14,9 @@ public class Star : CelestialBody
         GravityField();
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        CheckCollision(collision);
+        CheckTrigger(collider);
     }
 
     /*

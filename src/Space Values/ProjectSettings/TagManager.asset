@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Matrioska Brain
   - Pick Up
+  - Planet Ship
   layers:
   - Default
   - TransparentFX

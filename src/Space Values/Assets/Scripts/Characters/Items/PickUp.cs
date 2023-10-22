@@ -36,9 +36,9 @@ public class PickUp : MonoBehaviour
         if(collision != null)
         {
             GameObject go = collision.gameObject;
-            if(go.tag == "Player")
+            if(go.tag == "Planet Ship")
             {
-                go.GetComponent<Player>().PickUp(type, amount);
+                go.GetComponent<PlanetShip>().PickUp(type, amount);
                 PickedUp();
                 return;
             }

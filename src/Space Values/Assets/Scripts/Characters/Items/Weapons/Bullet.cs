@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed;
     [SerializeField] private byte damage;
-    private Rigidbody rb;
 
-    public byte Damage { get => damage; private set => damage = value; }
+    [SerializeField] private float speed;
+    [SerializeField] private CharacterController controller;
+
+    public byte Damage { get => damage; set => damage = value; }
+
+
 
     // Start is called before the first frame update
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -28,6 +31,6 @@ public class Bullet : MonoBehaviour
             transform.localPosition.y , 
             transform.localPosition.z + (speed * Time.deltaTime));*/
 
-        rb.velocity = transform.forward * speed; // * Time.deltaTime
+        controller.Move(transform.forward * speed * Time.deltaTime); // * Time.deltaTime
     }
 }

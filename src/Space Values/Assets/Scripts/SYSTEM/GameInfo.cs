@@ -5,10 +5,10 @@ using UnityEngine;
 internal class GameInfo : MonoBehaviour
 {
     [SerializeField] private string gameName = "Space Values";
-    [SerializeField] private string version = "0.11 pre-beta";
+    [SerializeField] private string version = "0.14 pre-beta";
     [SerializeField] private string company = "Infinity Ga∞es";
     [SerializeField] private List<string> developers;
-    [SerializeField] private string info = "Singleton implemented";
+    [SerializeField] private string info = "";
 
 
     internal string Name { get => gameName; private set => gameName = value; }

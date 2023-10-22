@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,14 +14,18 @@ public class Setup : MonoBehaviour
     private GameObject menuOptions;
     private List<GameObject> l_menu = new List<GameObject>();
 
+    [SerializeField] private List<GameObject> setActiveFalse;
+
+    [SerializeField] private List<GameObject> toDestroy;
     // Start is called before the first frame update
     private void Start()
     {
         SetBuildInfo();
         ResetMenu();
+
+        SetActiveFalse();
+        ToDestroy();
     }
-
-
 
     private void SetBuildInfo()
     {
@@ -42,6 +45,20 @@ public class Setup : MonoBehaviour
         foreach(GameObject go in l_menu)
         {
             go.SetActive(false);
+        }
+    }
+    void SetActiveFalse()
+    {
+        foreach (GameObject go in setActiveFalse)
+        {
+            go.SetActive(false);
+        }
+    }
+    void ToDestroy()
+    {
+        foreach(var v in toDestroy)
+        {
+            Destroy(v);
         }
     }
 }

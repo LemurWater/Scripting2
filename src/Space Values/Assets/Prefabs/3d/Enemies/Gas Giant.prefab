@@ -129,12 +129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae80153ff96494a46935c9354d5982d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0
   matrioskaBrain: {fileID: 0}
   health: 20
-  xSpeed: 0
-  ySpeed: 0
   damage: 10
+  enemyFacade: {fileID: 0}
+  gameOver: {fileID: 0}
 --- !u!135 &7263945108513136709
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

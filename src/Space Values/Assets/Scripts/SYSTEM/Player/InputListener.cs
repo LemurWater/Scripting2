@@ -8,7 +8,7 @@ public class InputListener : MonoBehaviour
     [SerializeField] private MenuManager menuManager;
     //CameraController cameraScript;
 
-    [SerializeField] private Player player;
+    [SerializeField] private PlanetShip planetShip;
 
 
 
@@ -60,7 +60,7 @@ public class InputListener : MonoBehaviour
     {
         if (Input.GetKeyDown(hotkeys.Shoot[0]) || Input.GetKeyDown(hotkeys.Shoot[1]))
         {
-            player.Shoot();
+            planetShip.Shoot();
         }
     }
     private void MoveFoward()
@@ -69,7 +69,7 @@ public class InputListener : MonoBehaviour
         {
             if (Input.GetKey(keyCode))
             {
-                player.MoveFoward();
+                planetShip.MoveFoward();
                 return;
             }
         }
@@ -80,7 +80,7 @@ public class InputListener : MonoBehaviour
         {
             if (Input.GetKey(keyCode))
             {
-                player.MoveBackwards();
+                planetShip.MoveBackwards();
                 return;
             }
         }

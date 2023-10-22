@@ -3,6 +3,9 @@ using UnityEngine;
 public abstract class Character : CelestialBody
 {
     [SerializeField] private protected byte health;
+    public static byte maxHealth;
+
+
     private protected CharacterController controller;
 
 

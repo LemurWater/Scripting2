@@ -5,14 +5,33 @@ using UnityEngine;
 public class GasGiant : Giant
 {
     [SerializeField] GameObject gameOver;
-    private protected override void CheckCollision(Collision collision)
+
+
+    public static GasGiant Instance { get; private set; }
+
+
+    /*private void Awake()
     {
-        base.CheckCollision(collision);
-
-
-        if (collision != null)
+        if (Instance == null)
         {
-            GameObject go = collision.gameObject;
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }*/
+
+
+
+    private protected override void CheckTrigger(Collider collider)
+    {
+        base.CheckTrigger(collider);
+
+
+        if (collider != null)
+        {
+            GameObject go = collider.gameObject;
 
             if (go.tag == "Matrioska Brain")
             {

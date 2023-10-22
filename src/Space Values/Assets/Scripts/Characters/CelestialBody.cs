@@ -33,11 +33,13 @@ public abstract class CelestialBody : MonoBehaviour
     {
         if (activate)
         {
-            //speed = startingSpeed;
+            gameObject.SetActive(true);
+            speed = 10.0f;
         }
         else
         {
             speed = 0.0f;
+            gameObject.SetActive(false);
             //GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
@@ -55,11 +57,11 @@ public abstract class CelestialBody : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, matrioskaBrain.position, step);
     }
 
-    private protected virtual void CheckCollision(Collision collision)
+    private protected virtual void CheckTrigger(Collider collider)
     {
-        if (collision != null)
+        if (collider != null)
         {
-            GameObject go = collision.gameObject;
+            GameObject go = collider.gameObject;
 
             if (go.tag == "Matrioska Brain")
             {
@@ -72,7 +74,7 @@ public abstract class CelestialBody : MonoBehaviour
     private protected virtual void DestroyCelestialBody()
     {
         //Destroy(gameObject);
-        Spawner?.Recycle(this);
+        //Spawner?.Recycle(this);
     }
     #endregion Private
 }
